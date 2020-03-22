@@ -15,10 +15,10 @@ export default Todo = () => {
     const ChangeHandler = (val) =>{
         setelement(val);
     }
-    const submitHandler = (todos) => {
-        setTodos((todos) => {
+    const submitHandler = (text) => {
+        setTodos((text) => {
             return [
-                {text : todos},
+                {text : text},
                 ...todos
 
             ]
@@ -29,14 +29,14 @@ export default Todo = () => {
         <Text >Enter TODO</Text>
         <TextInput style={{borderColor:'black', borderWidth:10,marginHorizontal:10}} onChangeText={ChangeHandler}></TextInput>
 
-        <Button title="Add"
+        {/* <Button title="Add"
         onPress={() => submitHandler(todos)}
-        />
+        /> */}
 
         <FlatList 
         keyExtractor={item => item.todos}
         data={todos}
-        renderItem={({item}) => {return(<Text>{item.todos}</Text>)}}
+        renderItem={({item}) => (<View><Text>{item.todos}</Text><Button title="X" onPress={() => this.submitHandler(todos)} /></View>)}
         
         />
 
